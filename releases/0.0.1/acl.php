@@ -6,10 +6,9 @@
  * A lightweight and simple access control list (ACL) 
  * implementation for privileges management.
  *
- * @package       Obullo
- * @subpackage    Libraries
- * @category      Libraries
- * @author        Obullo Team
+ * @package       Ob
+ * @subpackage    acl
+ * @category      access login
  * @link
  */
 
