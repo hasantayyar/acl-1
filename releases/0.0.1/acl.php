@@ -6,7 +6,7 @@
  * A lightweight and simple access control list (ACL) 
  * implementation for privileges management.
  *
- * @package       Ob
+ * @package       packages
  * @subpackage    acl
  * @category      access login
  * @link
