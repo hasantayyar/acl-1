@@ -35,7 +35,7 @@ Class Acl {
             getInstance()->acl = $this; // Available it in the contoller $this->auth->method();
         }
         
-        log\me('debug', "Acl Class Initialized");
+        logMe('debug', "Acl Class Initialized");
     }
    
     // ------------------------------------------------------------------------
