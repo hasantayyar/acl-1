@@ -32,7 +32,10 @@ Class Acl {
     {
         if($no_instance)
         {
-            getInstance()->acl = $this; // Available it in the contoller $this->auth->method();
+            if( ! isset(getInstance()->acl))
+            {
+                getInstance()->acl = $this; // Available it in the contoller $this->auth->method();
+            }
         }
         
         logMe('debug', "Acl Class Initialized");
