@@ -15,32 +15,18 @@ $this->acl->method();
 
 Once loaded, the Acl object will be available using: <kbd>$this->acl->method();</kbd>
 
-### Grabbing the Instance
-
-------
-
-Also using new Acl(false); boolean you can grab the instance of Obullo libraries,"$this->acl->method()" will not available in the controller.
-
-```php
-$acl = new Acl(false);
-$acl->method();
-```
-
 ### Creating a Group ( Roles ) and Adding Access
 
 ------
 
 ```php
-$acl = new Acl(false);
+$this->acl->addGroup('@admin');
+$this->acl->allow('@admin', 'create_user');
+$this->acl->addMember('maestro', '@admin');
 
-$acl->addGroup('@admin');
-$acl->allow('@admin', 'create_user');
-
-$acl->addMember('obullo', '@admin');
-
-if($acl->isAllowed('obullo', 'delete_user'))
+if($this->acl->isAllowed('maestro', 'delete_user'))
 {
-     echo 'Obullo has a create user access !';
+     echo 'Maestro has a create user access !';
 }
 ```
 
@@ -49,20 +35,19 @@ if($acl->isAllowed('obullo', 'delete_user'))
 -------
 
 ```php
-$acl = new Acl(false);
+$this->acl->clear();
+$this->acl->addGroup('@admin');
+$this->acl->addGroup('@editor');
 
-$acl->addGroup('@admin');
-$acl->addGroup('@editor');
+$this->acl->allow('@admin', array('create_user', 'delete_user'));
+$this->acl->allow('@editor', array('create_user', 'delete_user'));
 
-$acl->allow('@admin', array('create_user', 'delete_user'));
-$acl->allow('@editor', array('create_user', 'delete_user'));
+$this->acl->deny('@editor', 'delete_user');
 
-$acl->deny('@editor', 'delete_user');
+$this->acl->addMember('obullo', '@admin');
+$this->acl->addMember('john', '@editor');
 
-$acl->addMember('obullo', '@admin');
-$acl->addMember('john', '@editor');
-
-if(  ! $acl->isAllowed('john', 'delete_user'))
+if(  ! $this->acl->isAllowed('john', 'delete_user'))
 {
      echo 'John hasn't got delete user access !';
 }
@@ -73,12 +58,10 @@ if(  ! $acl->isAllowed('john', 'delete_user'))
 ------
 
 ```php
-$acl = new Acl(false);
+$this->acl->addGroup('@admin');
+$this->acl->allow('@admin', array('create_user', 'delete_user'));
 
-$acl->addGroup('@admin');
-$acl->allow('@admin', array('create_user', 'delete_user'));
-
-if(  $acl->isAllowed('@admin', 'delete_user'))
+if(  $this->acl->isAllowed('@admin', 'delete_user'))
 {
      echo 'Great @admin group has got delete user access !';
 }
@@ -88,27 +71,30 @@ if(  $acl->isAllowed('@admin', 'delete_user'))
 
 ------
 
-#### $acl->addGroup('@groupname')
+#### $this->acl->addGroup('@groupname')
 
 Creates a group ( role ), the group name must be have "@" prefix e.g. @admin.
 
-#### $acl->allow('@groupname', mixed 'operation')
+#### $this->acl->allow('@groupname', mixed 'operation')
 
 Add operation access to access list for provided group.
 
-#### $acl->deny('@groupname', mixed 'operation')
+#### $this->acl->deny('@groupname', mixed 'operation')
 
 Delete operation access to access list for provided group.
 
-#### $acl->addMember('membername', '@groupname')
+#### $this->acl->addMember('membername', '@groupname')
 
 Add member to provided group.
 
-#### $acl->delMember('membername', '@groupname')
+#### $this->acl->delMember('membername', '@groupname')
 
 Delete member from provided group.
 
-#### $acl->isAllowed('member_or_@group, 'operation_name')
+#### $this->acl->isAllowed('member_or_@group, 'operation_name')
 
 Check user or group has access for provided operation.
 
+#### $this->acl->clear()
+
+Clear / Reset all the class variables.

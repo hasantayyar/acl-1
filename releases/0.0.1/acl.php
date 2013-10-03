@@ -28,14 +28,11 @@ Class Acl {
     * @access    public
     * @return    void
     */
-    public function __construct($no_instance = true)
+    public function __construct()
     {
-        if($no_instance)
+        if( ! isset(getInstance()->acl))
         {
-            if( ! isset(getInstance()->acl))
-            {
-                getInstance()->acl = $this; // Available it in the contoller $this->auth->method();
-            }
+            getInstance()->acl = $this; // Available it in the contoller $this->auth->method();
         }
         
         logMe('debug', "Acl Class Initialized");
@@ -51,6 +48,15 @@ Class Acl {
     public function init()
     {
         return ($this);
+    }
+
+    // ------------------------------------------------------------------------
+
+    public function clear()
+    {
+        $this->groups  = array();
+        $this->members = array();
+        $this->access_list = array();
     }
     
     // ------------------------------------------------------------------------
