@@ -2,6 +2,7 @@
   "name": "acl",
   "description": "Access control list, role and permission management",
   "version": "0.0.1",
+  "versions": ["0.0.1"],
   "author": {
     "name": "Obullo Team",
     "email": "obulloframework@gmail.com",
