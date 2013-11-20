@@ -53,7 +53,7 @@ if(  ! $this->acl->isAllowed('john', 'delete_user'))
 }
 ```
 
-### Check group access
+### Checking Group Access
 
 ------
 
