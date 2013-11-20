@@ -13,7 +13,7 @@ new Acl();
 $this->acl->method();
 ```
 
-Once loaded, the Acl object will be available on: <kbd>$this->acl->method();</kbd>
+Once loaded, the Acl object will be available using: <kbd>$this->acl->method();</kbd>
 
 ### Creating a Group ( Roles ) and Adding Access
 
