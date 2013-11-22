@@ -53,7 +53,7 @@ if(  ! $this->acl->isAllowed('john', 'delete_user'))
 }
 ```
 
-### Check group access
+### Checking Group Access
 
 ------
 
@@ -73,28 +73,28 @@ if(  $this->acl->isAllowed('@admin', 'delete_user'))
 
 #### $this->acl->addGroup('@groupname')
 
-Creates a group ( role ), the group name must be have "@" prefix e.g. @admin.
+Creates a group ( role ), the group name must have the prefix "@"  e.g. @admin.
 
 #### $this->acl->allow('@groupname', mixed 'operation')
 
-Add operation access to access list for provided group.
+Adds operation access to access list for provided group.
 
 #### $this->acl->deny('@groupname', mixed 'operation')
 
-Delete operation access to access list for provided group.
+Deletes operation access to access list for provided group.
 
 #### $this->acl->addMember('membername', '@groupname')
 
-Add member to provided group.
+Adds member to provided group.
 
 #### $this->acl->delMember('membername', '@groupname')
 
-Delete member from provided group.
+Deletes the member from the provided group.
 
 #### $this->acl->isAllowed('member_or_@group, 'operation_name')
 
-Check user or group has access for provided operation.
+Checks if a user or group has access for provided operation.
 
 #### $this->acl->clear()
 
-Clear / Reset all the class variables.
+Clears / Resets all the class variables.
