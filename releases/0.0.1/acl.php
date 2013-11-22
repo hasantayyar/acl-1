@@ -24,8 +24,6 @@ Class Acl {
     * Sets the variables and runs the compilation routine
     * 
     * @param mixed $no_instance
-    * @version   0.1
-    * @access    public
     * @return    void
     */
     public function __construct()
